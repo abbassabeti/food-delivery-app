@@ -459,7 +459,7 @@ extension FoodMenuViewController {
                                         }, completion: {
                                             (finished: Bool) -> Void in
                                             cell.foodAddButton.backgroundColor = .black
-                                            cell.foodAddButton.setTitle("\(foodItem.price ?? 0.0) sgd", for: .normal)
+                                            cell.foodAddButton.setTitle("\(foodItem.price ?? 0.0) usd", for: .normal)
                                 })
                             })
                         }

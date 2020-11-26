@@ -56,7 +56,7 @@ extension FoodCartViewController: PresenterToViewFoodCartProtocol{
     func onRetrieveFoodCartItemsResponse(_ foodItems: [FoodItem]) {
         foodCartItemsRelay.accept(self.toSummary(foodItems))
         
-        foodCartTotalLbl.text = "\(foodCartTotal) sgd"
+        foodCartTotalLbl.text = "\(foodCartTotal) usd"
         
         foodCartPaymentButton.isHidden = isFoodCartEmpty
         //foodCartItemsView.tableFooterView?.isHidden = isFoodCartEmpty
@@ -144,7 +144,7 @@ extension FoodCartViewController {
     func initFoodCartItemsView() {
         foodCartItemsView.separatorColor = .clear
         
-        foodCartTotalLbl.text = "\(foodCartTotal) sgd"
+        foodCartTotalLbl.text = "\(foodCartTotal) usd"
         
         foodCartItemsRelay
             .bind(to: foodCartItemsView
@@ -189,9 +189,9 @@ class FoodCartItemsCell : UITableViewCell {
         
         foodNameLbl.text = foodItemSummary.foodItem?.name
         
-        foodPriceLbl.text = "\(foodItemSummary.foodItem?.price ?? 0.0) sgd"
+        foodPriceLbl.text = "\(foodItemSummary.foodItem?.price ?? 0.0) usd"
         
-        foodTotalPriceLbl.text = "\(foodItemSummary.totalCost) sgd"
+        foodTotalPriceLbl.text = "\(foodItemSummary.totalCost) usd"
         
         foodQtyLbl.text = "qty: \(foodItemSummary.foodItemCount)"
     }
