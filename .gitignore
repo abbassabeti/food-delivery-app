@@ -1,0 +1,5 @@
+Build/
+Pods/
+Podfile.lock
+FoodDeliveryWS.xcworkspace
+.DS_Store

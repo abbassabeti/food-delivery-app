@@ -1,0 +1,56 @@
+[
+    {
+        "itemId": "630a303d-1cc5-4f1c-a4f0-67141e656f11",
+        "name": "FoodPromoItems_001",
+        "imageName": "FoodPromoItems_001.png",
+        "ingredients" : "wheat, broccoli, tomatoes, peper, cumin",
+        "weight" : "120",
+        "size" : "9",
+        "price" : 7.0
+    },
+    {
+        "itemId": "a79c24a3-75e2-475a-9b83-a0ba7ad93869",
+        "name": "FoodPromoItems_002",
+        "imageName": "FoodPromoItems_002.png",
+        "ingredients" : "flour, prawn, tomato sauce, bean, wine",
+        "weight" : "200",
+        "size" : "7",
+        "price" : 15.80
+    },
+    {
+        "itemId": "931d29e0-ceeb-4f54-a68f-9ab3107b5dd4",
+        "name": "FoodPromoItems_003",
+        "imageName": "FoodPromoItems_003.png",
+        "ingredients" : "flour, tomatoes, potatoes, chillies",
+        "weight" : "250",
+        "size" : "12",
+        "price" : 18.99
+    },
+    {
+        "itemId": "630a303d-1cc5-4f1c-a4f0-67141e656f11",
+        "name": "Repeat FoodPromoItems_001",
+        "imageName": "FoodPromoItems_001.png",
+        "ingredients" : "wheat, broccoli, tomatoes, peper, cumin",
+        "weight" : "120",
+        "size" : "15",
+        "price" : 17.0
+    },
+    {
+        "itemId": "a79c24a3-75e2-475a-9b83-a0ba7ad93869",
+        "name": "Repeat FoodPromoItems_002",
+        "imageName": "FoodPromoItems_002.png",
+        "ingredients" : "flour, prawn, tomato sauce, bean, wine",
+        "weight" : "200",
+        "size" : "16",
+        "price" : 25.80
+    },
+    {
+        "itemId": "931d29e0-ceeb-4f54-a68f-9ab3107b5dd4",
+        "name": "Repeat FoodPromoItems_003",
+        "imageName": "FoodPromoItems_003.png",
+        "ingredients" : "flour, tomatoes, potatoes, chillies",
+        "weight" : "250",
+        "size" : "21",
+        "price" : 28.99
+    }
+]

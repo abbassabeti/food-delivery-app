@@ -1,0 +1,56 @@
+[
+    {
+        "itemId": "5567aac9-bbd0-45bb-986a-9c2b66d99b21",
+        "name": "Diet food",
+        "imageName": "FoodItems_002.png",
+        "ingredients" : "egg, cucumber, tomatoes, onions",
+        "weight" : "125",
+        "size" : "7",
+        "price" : 8.55
+    },
+    {
+        "itemId": "9a85e65f-ebd6-4308-8ac9-28b339b4f226",
+        "name": "Avocado toast",
+        "imageName": "FoodItems_001.png",
+        "ingredients" : "avocado, wheat, cabagge, tomatoes",
+        "weight" : "200",
+        "size" : "8",
+        "price" : 12.50
+    },
+    {
+        "itemId": "8db24939-e88d-4cca-b1aa-b7218e53494d",
+        "name": "Breakfast",
+        "imageName": "FoodItems_003.png",
+        "ingredients" : "egg, wheat, tomatoes, onions",
+        "weight" : "195",
+        "size" : "10",
+        "price" : 9.50
+    },
+    {
+        "itemId": "28bf6082-368d-4f36-a516-521ef5d83b82",
+        "name": "Tropical smoothie avocado toast",
+        "imageName": "FoodItems_004.png",
+        "ingredients" : "avocado, pineapple, meyer lemon",
+        "weight" : "135",
+        "size" : "7",
+        "price" : 10.5
+    },
+    {
+        "itemId": "f5394c1d-7b2d-46cf-b7d8-43368187d746",
+        "name": "Stuffed baked aubergines",
+        "imageName": "FoodItems_005.png",
+        "ingredients" : "aubergines, cloves, olive oil",
+        "weight" : "225",
+        "size" : "12",
+        "price" : 16.5
+    },
+    {
+        "itemId": "8db24939-e88d-4cca-b1aa-b7218e53494d",
+        "name": "Full Breakfast",
+        "imageName": "FoodItems_003.png",
+        "ingredients" : "egg, wheat, tomatoes, onions",
+        "weight" : "245",
+        "size" : "10",
+        "price" : 19.50
+    },
+]
