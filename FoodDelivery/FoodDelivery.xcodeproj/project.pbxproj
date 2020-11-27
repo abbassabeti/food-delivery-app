@@ -37,6 +37,7 @@
 		0538085E257108A600468DFE /* FoodPromoItems_004.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05380858257108A500468DFE /* FoodPromoItems_004.jpeg */; };
 		0538085F257108A600468DFE /* FoodPromoItems_006.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05380859257108A600468DFE /* FoodPromoItems_006.jpeg */; };
 		05380860257108A600468DFE /* FoodPromoItems_005.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0538085A257108A600468DFE /* FoodPromoItems_005.jpeg */; };
+		0538086425713BAD00468DFE /* delivery.png in Resources */ = {isa = PBXBuildFile; fileRef = 0538086325713BAD00468DFE /* delivery.png */; };
 		824BBA3AB0E0DD72897D424A /* Pods_FoodDelivery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C744FE244AA2582908DA2D /* Pods_FoodDelivery.framework */; };
 		D83EDC182559A3EA00E5CCBF /* FoodCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EDC172559A3EA00E5CCBF /* FoodCartModel.swift */; };
 		D83EDC1A2559AA5300E5CCBF /* FoodMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EDC192559AA5300E5CCBF /* FoodMenuModel.swift */; };
@@ -108,6 +109,7 @@
 		05380858257108A500468DFE /* FoodPromoItems_004.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FoodPromoItems_004.jpeg; sourceTree = "<group>"; };
 		05380859257108A600468DFE /* FoodPromoItems_006.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FoodPromoItems_006.jpeg; sourceTree = "<group>"; };
 		0538085A257108A600468DFE /* FoodPromoItems_005.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FoodPromoItems_005.jpeg; sourceTree = "<group>"; };
+		0538086325713BAD00468DFE /* delivery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delivery.png; sourceTree = "<group>"; };
 		6D87F7FD3A800DC708A8DD22 /* Pods-FoodDelivery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDelivery.release.xcconfig"; path = "Target Support Files/Pods-FoodDelivery/Pods-FoodDelivery.release.xcconfig"; sourceTree = "<group>"; };
 		B4C744FE244AA2582908DA2D /* Pods_FoodDelivery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodDelivery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83EDC172559A3EA00E5CCBF /* FoodCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartModel.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 		D83EDC232559B18800E5CCBF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0538086325713BAD00468DFE /* delivery.png */,
 				D83EDC262559B18800E5CCBF /* FoodCart.png */,
 				D83EDC282559B18800E5CCBF /* FD */,
 				D83EDC2C2559B18800E5CCBF /* FoodDeliveryLogo.png */,
@@ -423,6 +426,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0538086425713BAD00468DFE /* delivery.png in Resources */,
 				D8C1983B254E54B20057A4D9 /* LaunchScreen.storyboard in Resources */,
 				053808532571079900468DFE /* drink02.jpg in Resources */,
 				0538084B2571079900468DFE /* drink04.jpg in Resources */,

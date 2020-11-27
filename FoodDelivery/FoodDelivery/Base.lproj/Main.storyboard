@@ -196,7 +196,7 @@
                                                                         <constraint firstAttribute="height" constant="40" id="qNT-E5-5Wr"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                                    <state key="normal" title="10 sgd">
+                                                                    <state key="normal" title="10 usd">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
                                                                 </button>
@@ -378,7 +378,7 @@
                                             <rect key="frame" x="0.0" y="141" width="390" height="65"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery: 0.0 sgd (free)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaY-mX-vlm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery is free" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaY-mX-vlm">
                                                     <rect key="frame" x="15" y="5" width="330" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="KJu-tn-Gbw"/>
@@ -438,7 +438,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8A-bN-jeE">
-                                                                    <rect key="frame" x="85" y="30.666666666666671" width="175" height="24"/>
+                                                                    <rect key="frame" x="85" y="30.666666666666671" width="130" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="6GB-jN-oPu"/>
                                                                     </constraints>
@@ -446,11 +446,11 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999.99 sgd" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCA-KO-xUx">
-                                                                    <rect key="frame" x="270" y="32.666666666666664" width="75" height="20"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999.99 usd" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCA-KO-xUx">
+                                                                    <rect key="frame" x="225" y="32.666666666666664" width="120" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="BgU-at-r3W"/>
-                                                                        <constraint firstAttribute="width" constant="75" id="TQ1-GE-SMu"/>
+                                                                        <constraint firstAttribute="width" constant="120" id="TQ1-GE-SMu"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -467,7 +467,7 @@
                                                                     </state>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="qty: 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4t-hF-pCV">
-                                                                    <rect key="frame" x="270" y="57.666666666666657" width="75" height="20"/>
+                                                                    <rect key="frame" x="225" y="57.666666666666657" width="120" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="bfx-Yw-vtg"/>
                                                                     </constraints>
@@ -475,11 +475,11 @@
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999.99 sgd" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnP-c4-v9X">
-                                                                    <rect key="frame" x="85" y="57.666666666666657" width="75" height="20"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999.99 usd" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnP-c4-v9X">
+                                                                    <rect key="frame" x="85" y="57.666666666666657" width="120" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="CQg-yR-vt5"/>
-                                                                        <constraint firstAttribute="width" constant="75" id="gj3-ja-MP4"/>
+                                                                        <constraint firstAttribute="width" constant="120" id="gj3-ja-MP4"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -574,7 +574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3a-Jp-Irf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3" y="252"/>
+            <point key="canvasLocation" x="-4.3478260869565224" y="251.78571428571428"/>
         </scene>
     </scenes>
     <resources>

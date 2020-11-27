@@ -25,19 +25,17 @@ class FoodItemsCell : UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBagOfCell = DisposeBag()
+        setShadow()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setShadow()
+    }
+    
+    func setShadow(){
         let shadowView : UIView = self.foodItemCellView
-        shadowView.clipsToBounds = false
-        shadowView.layer.masksToBounds = false
-        shadowView.layer.shadowOpacity = 0.55
-        shadowView.layer.shadowRadius = 8
-        shadowView.layer.shadowOffset = CGSize(width: 2, height: 5)
-        shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.backgroundColor = .white
-        shadowView.layer.cornerRadius = 8
+        shadowView.setShadow(contentView: self.contentView, shadowOpacity: 0.05, shadowRadius: 8, cornerRadius: 8, shadowOffset: CGSize(width: 1, height: 3))
     }
     
     func setValues(_ foodItem: FoodItem) {

@@ -37,3 +37,40 @@ extension UIImage {
         }
     }
 }
+
+extension UIView {
+    func setShadow(contentView: UIView? = nil, shadowOpacity: Float = 0.12,
+                   shadowRadius: CGFloat = 2,
+                   cornerRadius: CGFloat = 10,
+                   shadowOffset: CGSize = CGSize(width: 0, height: 4),
+                   shadowColor: CGColor = UIColor.black.cgColor,padding: CGFloat = 0) {
+        DispatchQueue.main.async {
+            let previousContentView = self.viewWithTag(29984)
+            let _contentView = contentView ?? previousContentView ?? UIView()
+            if (contentView == nil && previousContentView == nil){
+                self.addSubview(_contentView)
+                _contentView.tag = 29984
+
+                NSLayoutConstraint.activate([
+                    _contentView.topAnchor.constraint(equalTo: self.topAnchor,constant: padding),
+                    _contentView.rightAnchor.constraint(equalTo: self.rightAnchor,constant: padding * -1),
+                    _contentView.leftAnchor.constraint(equalTo: self.leftAnchor,constant: padding),
+                    _contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: padding * -1)
+                ])
+            }
+            
+            _contentView.layer.cornerRadius = cornerRadius
+            _contentView.layer.borderWidth = 1.0
+            _contentView.layer.borderColor = UIColor.clear.cgColor
+            _contentView.layer.masksToBounds = true
+            
+            self.layer.shadowColor = shadowColor
+            self.layer.shadowOffset = shadowOffset
+            self.layer.shadowRadius = shadowRadius
+            self.layer.shadowOpacity = shadowOpacity
+            self.layer.masksToBounds = false
+            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: _contentView.layer.cornerRadius).cgPath
+        }
+        self.clipsToBounds = false
+    }
+}

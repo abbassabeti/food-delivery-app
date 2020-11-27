@@ -11,8 +11,10 @@ import Foundation
 
 // MARK: View Output (Presenter -> View)
 protocol PresenterToViewFoodMenuProtocol {
-    func onReceivingFoodItemsSuccessResponse(_ foodItems: [FoodItem], _ foodPromoItems: [FoodItem])
+    func onReceivingFoodItemsSuccessResponse()
     func onReceivingFoodItemsFailureResponse(_ error: Error)
+    func onNewCategorySelected(isLtoR: Bool)
+    func toast(_ str: String)
 }
 
 
@@ -23,7 +25,11 @@ protocol ViewToPresenterFoodMenuProtocol {
     var interactor: PresenterToInteractorFoodMenuProtocol? { get set }
     var router: PresenterToRouterFoodMenuProtocol? { get set }
     
+    var viewModel : FoodMenuViewModel { get set }
+    
     func startReceivingFoodItems()
+    
+    func updateDisplayFoodItems(newCategory: Int, previousCategory: Int?)
 }
 
 

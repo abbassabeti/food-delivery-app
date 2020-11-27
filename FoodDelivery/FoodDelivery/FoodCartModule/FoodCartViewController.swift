@@ -47,58 +47,13 @@ class FoodCartViewController: UIViewController {
     var foodCartPresenter: ViewToPresenterFoodCartProtocol?
     
     private let disposeBag = DisposeBag()
-    private let foodManagerItems = Observable.just(["Cart", "Orders", "Info"])
-    private let foodCartItemsRelay: BehaviorRelay<[FoodItemSummary]> = BehaviorRelay(value: [])
 }
 
 extension FoodCartViewController: PresenterToViewFoodCartProtocol{
-    
-    func onRetrieveFoodCartItemsResponse(_ foodItems: [FoodItem]) {
-        foodCartItemsRelay.accept(self.toSummary(foodItems))
-        
+    func onRetrieveFoodCartItemsResponse(foodCartTotal: Float, isFoodCartEmpty: Bool) {
         foodCartTotalLbl.text = "\(foodCartTotal) usd"
         
         foodCartPaymentButton.isHidden = isFoodCartEmpty
-        //foodCartItemsView.tableFooterView?.isHidden = isFoodCartEmpty
-    }
-    
-    var isFoodCartEmpty: Bool {
-        foodCartItemsRelay.value.count == 0
-    }
-    
-    var foodCartTotal: Float {
-        return foodCartItemsRelay.value.map( {$0.totalCost} ).reduce(0, +)
-    }
-    
-    func toSummary(_ foodItems: [FoodItem]) -> [FoodItemSummary] {
-        guard foodItems.count > 0 else {
-            return [FoodItemSummary]()
-        }
-      
-        // set of food items...
-        let foodItemsSet = Set<FoodItem>(foodItems)
-      
-        // count of each food item..
-        let foodItemsSummary:[FoodItemSummary] = foodItemsSet.map { foodItem in
-            let count: Int = foodItems.reduce(0) {
-                cummTotal, reduceFoodItem in
-
-                if foodItem == reduceFoodItem {
-                    return cummTotal + 1
-                }
-
-                return cummTotal
-            }
-
-            var fiSummary: FoodItemSummary = FoodItemSummary()
-            fiSummary.foodItem = foodItem
-            fiSummary.foodItemCount = count
-            fiSummary.totalCost = Float(count) * (foodItem.price ?? 0.0)
-
-            return fiSummary
-        }
-
-        return foodItemsSummary
     }
 }
 
@@ -115,17 +70,18 @@ extension FoodCartViewController {
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
         foodManagerItemsView.collectionViewLayout = flowLayout
-        
-        foodManagerItems
-            .bind(to: foodManagerItemsView
-                .rx
-                .items(cellIdentifier: FoodManagerItemCell.Identifier,
-                       cellType: FoodManagerItemCell.self)) {
-                        item, managerItem, cell in
-                        cell.setValue(managerItem)
-                        cell.updateAsSelectedUI()
-            }
-            .disposed(by: disposeBag)
+        if let foodManagerItems = self.foodCartPresenter?.viewModel.foodManagerItems {
+            foodManagerItems
+                .bind(to: foodManagerItemsView
+                    .rx
+                    .items(cellIdentifier: FoodManagerItemCell.Identifier,
+                           cellType: FoodManagerItemCell.self)) {
+                            item, managerItem, cell in
+                            cell.setValue(managerItem)
+                            cell.updateAsSelectedUI()
+                }
+                .disposed(by: disposeBag)
+        }
         
         foodManagerItemsView
             .rx
@@ -152,17 +108,20 @@ extension FoodCartViewController {
     func initFoodCartItemsView() {
         foodCartItemsView.separatorColor = .clear
         
-        foodCartTotalLbl.text = "\(foodCartTotal) usd"
+        if let viewModel = self.foodCartPresenter?.viewModel {
         
-        foodCartItemsRelay
-            .bind(to: foodCartItemsView
-                .rx
-                .items(cellIdentifier: FoodCartItemsCell.Identifier,
-                       cellType: FoodCartItemsCell.self)) {
-                        row, foodItemSummary, cell in
-                        cell.setValues(foodItemSummary)
-            }
-            .disposed(by: disposeBag)
+            foodCartTotalLbl.text = "\(viewModel.foodCartTotal) usd"
+            
+            viewModel.foodCartItemsRelay
+                .bind(to: foodCartItemsView
+                    .rx
+                    .items(cellIdentifier: FoodCartItemsCell.Identifier,
+                           cellType: FoodCartItemsCell.self)) {
+                            row, foodItemSummary, cell in
+                            cell.setValues(foodItemSummary)
+                }
+                .disposed(by: disposeBag)
+        }
     }
 }
 

@@ -41,18 +41,15 @@ class FoodMenuViewController: UIViewController, UICollectionViewDelegate, UITabl
     private let disposeBag = DisposeBag()
     private var appState: BehaviorRelay<DDAppState> = BehaviorRelay(value: .loading)
     
-    private var foodPromoItemsSource: [FoodItem] = [FoodItem]()
-    private var displayFoodPromoItemsRelay: BehaviorRelay<[FoodItem]> = BehaviorRelay(value: [])
-    
-    private var foodCategoriesSource: [String] = ["Pizza", "Sushi", "Drinks"]
-    
-    private var foodItemsSource: [FoodItem] = [FoodItem]()
-    private var displayFoodItemsRelay: BehaviorRelay<[FoodItem]> = BehaviorRelay(value: [])
-    
     private var loadingImgViewTimer: Timer? = nil
     private var loadingImageAnimationFlag: Bool = false
     private var previousOffset: CGFloat = 0.0
+    private var needsWhiteStatus: Bool = true
     private var lastIndex: Int = 0
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return needsWhiteStatus ? .lightContent : .darkContent
+    }
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -66,26 +63,57 @@ class FoodMenuViewController: UIViewController, UICollectionViewDelegate, UITabl
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        //.default
-        .lightContent
-    }
 }
 
 extension FoodMenuViewController: PresenterToViewFoodMenuProtocol {
     
-    func onReceivingFoodItemsSuccessResponse(_ foodItems: [FoodItem], _ foodPromoItems: [FoodItem]) {
+    func onNewCategorySelected(isLtoR: Bool){
+        guard let displayFoodItems = self.foodMenuPresenter?.viewModel.displayFoodItemsRelay.value else {return}
+        if let viewToAnimate = self.foodItemsView {
+            // L -> R
+            var l2rFrame: CGRect = viewToAnimate.frame
+
+            l2rFrame.origin.x = viewToAnimate.frame.size.width * (isLtoR ? 1 : -1);
+            
+            UIView.animate(withDuration:0.4, delay:0.0, options: .curveEaseIn,
+                           animations: {
+                            viewToAnimate.frame = l2rFrame
+                            viewToAnimate.alpha = 0.4
+                        }, completion: {
+                            (finished: Bool) -> Void in
+                            self.foodItemsView.reloadData()
+                            if displayFoodItems.count > 0 {
+                                self.foodItemsView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                            }
+                            
+                            // R <- L
+                            var r2lFrame: CGRect = viewToAnimate.frame;
+                            viewToAnimate.frame.origin.x = viewToAnimate.frame.size.width * (isLtoR ? -1 : 1)
+                            r2lFrame.origin.x = 0;
+                            
+                            UIView.animate(withDuration:0.7, delay:0.0, options: .curveEaseOut,
+                               animations: {
+                                viewToAnimate.frame = r2lFrame
+                                viewToAnimate.alpha = 1
+                            }, completion: {
+                                (finished: Bool) -> Void in
+                            });
+                        });
+            
+            
+        }
+    }
+    
+    func onReceivingFoodItemsSuccessResponse() {
         
-        self.foodItemsSource = foodItems
-        self.foodPromoItemsSource = foodPromoItetms
+       
         
         self.appState.accept(.loaded)
     }
     
     func onReceivingFoodItemsFailureResponse(_ error: Error) {
         // TODO:
-        // as of now repsonse is mocked with delay of 5 secs.. so no error will happen !!
+        // as of now repsonse is mocked with delay of 2 secs.. so no error will happen !!
         print(error)
     }
 }
@@ -116,8 +144,9 @@ extension FoodMenuViewController {
     
     private func moveToNextPromo(_ nextPage: Int) {
         var cellToSwipe: Int = nextPage
+        guard let foodPromoItemsSource = self.foodMenuPresenter?.viewModel.foodPromoItemsSource else {return}
         
-        if (cellToSwipe >= self.foodPromoItemsSource.count) {
+        if (cellToSwipe >= foodPromoItemsSource.count) {
             cellToSwipe = 0
         }
             
@@ -150,33 +179,27 @@ extension FoodMenuViewController {
             let newY: CGFloat = -self.foodPromoItemsViewYConstraint.constant + delta
             
             if newY >= carouselHeight {
-                print("1 \(newY) \(delta)")
                 self.foodPromoItemsViewYConstraint.constant = -1 * carouselHeight
-                //self.foodItemsViewYConstraint.constant = -61
-                return
+                needsWhiteStatus = false
             }else if newY < 0 {
-                print("2 \(newY) \(delta)")
                 self.foodPromoItemsViewYConstraint.constant = 0
-                //self.foodItemsViewYConstraint.constant = 271
-                return
             }else {
+                // Make status dark when there is a 180 point distance to the top
+                needsWhiteStatus = (carouselHeight + foodPromoItemsViewYConstraint.constant > 180)
                 //we compress the top view
                 if delta > 0 {
-                    print("3 \(newY) \(delta)")
                    foodPromoItemsViewYConstraint.constant -= delta
-                   //foodItemsViewYConstraint.constant -= delta
                     scrollView.contentOffset.y -= delta
                 }
 
                 //we expand the top view
                 if delta < 0 {
-                    print("4 \(newY) \(delta)")
                    foodPromoItemsViewYConstraint.constant -= delta
-                   //foodItemsViewYConstraint.constant -= delta
                     scrollView.contentOffset.y -= delta
                 }
                 previousOffset = scrollView.contentOffset.y
             }
+            self.setNeedsStatusBarAppearanceUpdate()
         }
     }
 }
@@ -201,9 +224,7 @@ extension FoodMenuViewController {
         appState.asObservable()
             .subscribe(onNext: {
                 [unowned self] app_state in
-                
-                print("App State: \(app_state)")
-            
+                            
                 if app_state == .loaded {
                     self.stopLoading()
                     self.initFoodMenuView()
@@ -225,8 +246,8 @@ extension FoodMenuViewController {
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
         foodPromoItemsView.setCollectionViewLayout(flowLayout, animated: true)
-
-        displayFoodPromoItemsRelay.accept(self.foodPromoItemsSource)
+        
+        guard let displayFoodPromoItemsRelay = self.foodMenuPresenter?.viewModel.displayFoodPromoItemsRelay else {return}
         
         displayFoodPromoItemsRelay
             .bind(to: foodPromoItemsView
@@ -249,9 +270,7 @@ extension FoodMenuViewController {
         foodPromoItemsPageCtrl.currentPageIndicatorTintColor = .white
         foodPromoItemsPageCtrl.pageIndicatorTintColor = .white
 
-        Observable.just(foodPromoItemsSource.count)
-            .bind(to: foodPromoItemsPageCtrl.rx.numberOfPages)
-            .disposed(by: disposeBag)
+        self.foodMenuPresenter?.viewModel.displayFoodPromoItemsRelay.map({$0.count}).asObservable().bind(to: foodPromoItemsPageCtrl.rx.numberOfPages).disposed(by: disposeBag)
         
         foodPromoItemsPageCtrl.rx.controlEvent(.valueChanged)
             // commented, until touch event handled..
@@ -259,9 +278,8 @@ extension FoodMenuViewController {
 //                self.moveToNextPromo(self.foodPromoItemsPageCtrl.currentPage + 1)
 //            })
             .subscribe(onNext: { value in
-                print("vvv value is \(value)")
                 self.moveToNextPromo(self.foodPromoItemsPageCtrl.currentPage + 1)
-                //print("valueChanged: \(self.foodPromoItemsPageCtrl.currentPage) (only log.. action to be handled..)")
+                
             })
             .disposed(by: disposeBag)
     }
@@ -275,7 +293,8 @@ extension FoodMenuViewController {
         flowLayout.minimumLineSpacing = 0
         foodCategoriesView.collectionViewLayout = flowLayout
         
-        Observable.just(self.foodCategoriesSource)
+        if let categories = self.foodMenuPresenter?.viewModel.foodCategoriesSource {
+            Observable.just(categories)
             .bind(to: foodCategoriesView
                 .rx
                 .items(cellIdentifier: FoodCategoriesCell.Identifier,
@@ -285,19 +304,19 @@ extension FoodMenuViewController {
                         cell.updateAsSelectedUI()
             }
             .disposed(by: disposeBag)
+        }
         
         foodCategoriesView
             .rx
             .itemSelected
             .subscribe(onNext:{ [unowned self] indexPath in
-                //let selectedCategoryItem = self.foodCategoriesView.indexPathsForSelectedItems?.first?.item ?? 0
                 
                 let cell = self.foodCategoriesView.cellForItem(at: indexPath) as? FoodCategoriesCell
                 cell?.updateAsSelectedUI()
                 self.foodCategoriesView.scrollToItem(at: IndexPath(item: indexPath.item, section: 0), at: .centeredHorizontally, animated: true)
                 
                 // need to check, is already same category in display !! :)
-                self.updateDisplayFoodItems(newCategory: indexPath.item,previousCategory: lastIndex)
+                self.foodMenuPresenter?.updateDisplayFoodItems(newCategory: indexPath.item,previousCategory: lastIndex)
                 self.lastIndex = indexPath.item
             })
             .disposed(by: disposeBag)
@@ -312,64 +331,7 @@ extension FoodMenuViewController {
             .disposed(by: disposeBag)
         
         foodCategoriesView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-        updateDisplayFoodItems(newCategory: 0)
-    }
-    
-    private func updateDisplayFoodItems(newCategory: Int, previousCategory: Int? = nil) {
-        let isLtoR : Bool = newCategory < (previousCategory ?? 0)
-        var animate: Bool = false
-        
-        switch newCategory {
-            case 0:
-                displayFoodItemsRelay.accept(self.foodItemsSource.filter { $0.type == 1 })
-                animate = true
-            case 1:
-                displayFoodItemsRelay.accept(self.foodItemsSource.filter { $0.type == 2 })
-                animate = true
-            case 2:
-                displayFoodItemsRelay.accept(self.foodItemsSource.filter { $0.type == 3 })
-                animate = true
-            default:
-                print("popup")
-                // assumed category index within the range :)
-                self.toast("\(foodCategoriesSource[newCategory]) Coming Soon..")
-        }
-        
-        if animate {
-            if let viewToAnimate = self.foodItemsView {
-                // L -> R
-                var l2rFrame: CGRect = viewToAnimate.frame
-                print("y is \(l2rFrame.minY) \(l2rFrame.maxY)")
-                l2rFrame.origin.x = viewToAnimate.frame.size.width * (isLtoR ? 1 : -1);
-                
-                UIView.animate(withDuration:0.4, delay:0.0, options: .curveEaseIn,
-                               animations: {
-                                viewToAnimate.frame = l2rFrame
-                                viewToAnimate.alpha = 0.4
-                            }, completion: {
-                                (finished: Bool) -> Void in
-                                self.foodItemsView.reloadData()
-                                if self.displayFoodItemsRelay.value.count > 0 {
-                                    self.foodItemsView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-                                }
-                                
-                                // R <- L
-                                var r2lFrame: CGRect = viewToAnimate.frame;
-                                viewToAnimate.frame.origin.x = viewToAnimate.frame.size.width * (isLtoR ? -1 : 1)
-                                r2lFrame.origin.x = 0;
-                                
-                                UIView.animate(withDuration:0.7, delay:0.0, options: .curveEaseOut,
-                                   animations: {
-                                    viewToAnimate.frame = r2lFrame
-                                    viewToAnimate.alpha = 1
-                                }, completion: {
-                                    (finished: Bool) -> Void in
-                                });
-                            });
-                
-                
-            }
-        }
+        self.foodMenuPresenter?.updateDisplayFoodItems(newCategory: 0,previousCategory: nil)
     }
     
     private func moveToNextFoodCategory(_ direction: UISwipeGestureRecognizer.Direction) {
@@ -394,8 +356,6 @@ extension FoodMenuViewController {
             }
         }
         
-        //print("Selected: \(selectedCategoryItem), Next: \(nextCategoryItem), Direction: \(direction)")
-        
         if nextCategoryItem != selectedCategoryItem {
             // deselect current
             let currIndexPath = IndexPath(item: selectedCategoryItem, section: 0)
@@ -415,7 +375,7 @@ extension FoodMenuViewController {
             
             self.foodCategoriesView.selectItem(at: nextIndexPath, animated: true, scrollPosition: .centeredHorizontally)
             
-            self.updateDisplayFoodItems(newCategory: nextCategoryItem,previousCategory: lastIndex)
+            self.foodMenuPresenter?.updateDisplayFoodItems(newCategory: nextCategoryItem,previousCategory: lastIndex)
             lastIndex = nextCategoryItem
         }
     }
@@ -457,7 +417,8 @@ extension FoodMenuViewController {
             
         }).disposed(by: disposeBag)
         
-        // data & add butotn tap..
+        // data & add button tap..
+        guard let displayFoodItemsRelay = self.foodMenuPresenter?.viewModel.displayFoodItemsRelay else {return}
         displayFoodItemsRelay
             .bind(to: foodItemsView
                 .rx
@@ -469,8 +430,6 @@ extension FoodMenuViewController {
                         cell.foodAddButton
                         .rx.tap
                         .subscribe(onNext: {
-                            print("\(foodItem.name ?? "Food Item") \(foodItem.price ?? 0.0)")
-                            
                             // Fade out
                             UIView.animate(withDuration: 1.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
                                     FoodCart.sharedCart.add(foodItem)
@@ -499,7 +458,6 @@ extension FoodMenuViewController {
             .asObservable()
             .subscribe(onNext: {
               [unowned self] food_items in
-                // self.foodCartButton.badge = "\(food_items.count)"
                 self.foodCartButton.animate("\(food_items.count)")
             })
             .disposed(by: disposeBag)

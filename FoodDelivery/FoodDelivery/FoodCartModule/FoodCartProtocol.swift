@@ -11,8 +11,7 @@ import Foundation
 
 // MARK: View Output (Presenter -> View)
 protocol PresenterToViewFoodCartProtocol {
-
-   func onRetrieveFoodCartItemsResponse(_ foodItems: [FoodItem])
+   func onRetrieveFoodCartItemsResponse(foodCartTotal: Float,isFoodCartEmpty: Bool)
 }
 
 
@@ -22,6 +21,8 @@ protocol ViewToPresenterFoodCartProtocol {
     var view: PresenterToViewFoodCartProtocol? { get set }
     var interactor: PresenterToInteractorFoodCartProtocol? { get set }
     var router: PresenterToRouterFoodCartProtocol? { get set }
+    
+    var viewModel: FoodCartViewModel { get set }
     
     func startRetrievingFoodCartItems()
 }
