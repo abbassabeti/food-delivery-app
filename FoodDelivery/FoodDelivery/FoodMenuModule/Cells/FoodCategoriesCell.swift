@@ -3,7 +3,7 @@
 //  FoodDelivery
 //
 //  Created by Abbas on 11/27/20.
-//  Copyright © 2020 DinDinn. All rights reserved.
+//
 //
 
 import UIKit
