@@ -18,6 +18,7 @@ struct FoodItem: Mappable, Hashable {
     var weight: String?
     var size: String?
     var price: Float?
+    var type: Int?
     
     init?() {}
     
@@ -31,6 +32,7 @@ struct FoodItem: Mappable, Hashable {
         weight      <- map["weight"]
         size        <- map["size"]
         price       <- map["price"]
+        type        <- map["type"]
     }
     
     static let mockedFoodPromoItems: [FoodItem] = {

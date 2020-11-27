@@ -19,6 +19,8 @@ enum DDAppState {
 
 class FoodMenuViewController: UIViewController, UICollectionViewDelegate, UITableViewDelegate {
     
+    let carouselHeight = UIScreen.main.bounds.height * 0.7 + 61
+    
     // MARK: - Outlets
     @IBOutlet weak private var foodPromoItemsView: UICollectionView!
     @IBOutlet weak private var foodPromoItemsViewYConstraint: NSLayoutConstraint!
@@ -76,7 +78,7 @@ extension FoodMenuViewController: PresenterToViewFoodMenuProtocol {
     func onReceivingFoodItemsSuccessResponse(_ foodItems: [FoodItem], _ foodPromoItems: [FoodItem]) {
         
         self.foodItemsSource = foodItems
-        self.foodPromoItemsSource = foodPromoItems
+        self.foodPromoItemsSource = foodPromoItetms
         
         self.appState.accept(.loaded)
     }
@@ -142,28 +144,39 @@ extension FoodMenuViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         if scrollView == foodItemsView {
+
+             let delta =  scrollView.contentOffset.y - previousOffset
             
-            let newY: CGFloat = scrollView.contentOffset.y
+            let newY: CGFloat = -self.foodPromoItemsViewYConstraint.constant + delta
             
-            if newY >= 332 {
-                self.foodPromoItemsViewYConstraint.constant = -332
-                self.foodItemsViewYConstraint.constant = -61
-                //previousOffset = 0
+            if newY >= carouselHeight {
+                print("1 \(newY) \(delta)")
+                self.foodPromoItemsViewYConstraint.constant = -1 * carouselHeight
+                //self.foodItemsViewYConstraint.constant = -61
                 return
             }else if newY < 0 {
+                print("2 \(newY) \(delta)")
                 self.foodPromoItemsViewYConstraint.constant = 0
-                self.foodItemsViewYConstraint.constant = 271
-                //previousOffset = 0
+                //self.foodItemsViewYConstraint.constant = 271
                 return
             }else {
-                self.foodPromoItemsViewYConstraint.constant = -1 * newY
-                self.foodItemsViewYConstraint.constant = 271 - newY
-                //scrollView.contentInset.top = scrollView.contentOffset.y
-                //previousOffset = scrollView.contentOffset.y
-                //scrollView.contentOffset.y = 0
+                //we compress the top view
+                if delta > 0 {
+                    print("3 \(newY) \(delta)")
+                   foodPromoItemsViewYConstraint.constant -= delta
+                   //foodItemsViewYConstraint.constant -= delta
+                    scrollView.contentOffset.y -= delta
+                }
+
+                //we expand the top view
+                if delta < 0 {
+                    print("4 \(newY) \(delta)")
+                   foodPromoItemsViewYConstraint.constant -= delta
+                   //foodItemsViewYConstraint.constant -= delta
+                    scrollView.contentOffset.y -= delta
+                }
+                previousOffset = scrollView.contentOffset.y
             }
-            
-            print("new Y: \(newY).. screen Height: \(UIScreen.main.bounds.height)")
         }
     }
 }
@@ -206,6 +219,12 @@ extension FoodMenuViewController {
     func initFoodPromoItemsView() {
         foodPromoItemsView.delegate = self
         foodPromoItemsView.isPagingEnabled = true
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.7)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
+        foodPromoItemsView.setCollectionViewLayout(flowLayout, animated: true)
 
         displayFoodPromoItemsRelay.accept(self.foodPromoItemsSource)
         
@@ -216,6 +235,7 @@ extension FoodMenuViewController {
                        cellType: FoodPromoItemsCell.self)) {
                         row, foodItem, cell in
                         cell.setValues(foodItem)
+
             }
             .disposed(by: disposeBag)
         
@@ -238,7 +258,8 @@ extension FoodMenuViewController {
 //            .subscribe(onNext: { [unowned self] in
 //                self.moveToNextPromo(self.foodPromoItemsPageCtrl.currentPage + 1)
 //            })
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: { value in
+                print("vvv value is \(value)")
                 self.moveToNextPromo(self.foodPromoItemsPageCtrl.currentPage + 1)
                 //print("valueChanged: \(self.foodPromoItemsPageCtrl.currentPage) (only log.. action to be handled..)")
             })
@@ -247,6 +268,12 @@ extension FoodMenuViewController {
     
     func initFoodCategoriesView() {
         foodCategoriesView.allowsMultipleSelection = false
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 20, height: 35)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
+        foodCategoriesView.collectionViewLayout = flowLayout
         
         Observable.just(self.foodCategoriesSource)
             .bind(to: foodCategoriesView
@@ -294,13 +321,13 @@ extension FoodMenuViewController {
         
         switch newCategory {
             case 0:
-                print("Diet")
-                displayFoodItemsRelay.accept(self.foodItemsSource)
+                displayFoodItemsRelay.accept(self.foodItemsSource.filter { $0.type == 1 })
                 animate = true
             case 1:
-                print("Pizza")
-                displayFoodItemsRelay.accept(self.foodItemsSource.filter { items in
-                    return (items.ingredients?.contains("wheat") ?? false) })
+                displayFoodItemsRelay.accept(self.foodItemsSource.filter { $0.type == 2 })
+                animate = true
+            case 2:
+                displayFoodItemsRelay.accept(self.foodItemsSource.filter { $0.type == 3 })
                 animate = true
             default:
                 print("popup")
@@ -396,6 +423,7 @@ extension FoodMenuViewController {
     func initFoodItemsView() {
         foodItemsView.delegate = self
         foodItemsView.separatorColor = .clear
+        foodItemsView.showsVerticalScrollIndicator = false
         
         let roundCornerView = foodItemsView.superview!
         
@@ -445,7 +473,6 @@ extension FoodMenuViewController {
                             
                             // Fade out
                             UIView.animate(withDuration: 1.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
-                            // UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
                                     FoodCart.sharedCart.add(foodItem)
                                 
                                     cell.foodAddButton.backgroundColor = .systemGreen
@@ -455,7 +482,6 @@ extension FoodMenuViewController {
                                     
                                     // Fade in
                                     UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                                    // UIView.animate(withDuration: 0.1, delay: 0.0, animations: {
                                         }, completion: {
                                             (finished: Bool) -> Void in
                                             cell.foodAddButton.backgroundColor = .black
@@ -477,68 +503,5 @@ extension FoodMenuViewController {
                 self.foodCartButton.animate("\(food_items.count)")
             })
             .disposed(by: disposeBag)
-    }
-}
-
-class FoodPromoItemsCell : UICollectionViewCell {
-    static let Identifier = "FoodPromoItemsCell"
-    
-    @IBOutlet private var foodPromoImgView: UIImageView!
-    @IBOutlet private var foodPromoNameLbl: UILabel!
-    
-    func setValues(_ foodItem: FoodItem) {
-        //foodPromoNameLbl.text = foodItem.name
-        foodPromoImgView.image = UIImage(named: foodItem.imageName ?? "")
-    }
-}
-
-class FoodCategoriesCell : UICollectionViewCell {
-    static let Identifier = "FoodCategoriesCell"
-    
-    @IBOutlet private var foodCategoryLbl: UILabel!
-    
-    func setValue(_ category: String) {
-        foodCategoryLbl.text = category
-    }
-    
-    func updateAsSelectedUI() {
-        foodCategoryLbl.textColor = isSelected ? .black : .lightGray
-    }
-}
-
-class FoodItemsCell : UITableViewCell {
-    static let Identifier = "FoodItemsCell"
-    
-    @IBOutlet private var foodImgView: UIImageView!
-    @IBOutlet private var foodNameLbl: UILabel!
-    @IBOutlet private var foodIngredientsLbl: UILabel!
-    @IBOutlet private var foodDimensionsLbl: UILabel!
-    @IBOutlet var foodAddButton: UIButton!
-    
-    var disposeBagOfCell = DisposeBag()
-    
-    // Make disposbag empty for reusing cell.
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        disposeBagOfCell = DisposeBag()
-    }
-    
-    func setValues(_ foodItem: FoodItem) {
-        foodImgView.image = UIImage(named: foodItem.imageName ?? "")
-        
-        let roundCornerView = foodImgView.superview!
-        roundCornerView.layer.cornerRadius = 20
-        roundCornerView.layer.masksToBounds = true
-        
-        roundCornerView.layer.borderWidth = 0.1
-        roundCornerView.layer.borderColor = UIColor.lightGray.cgColor
-        
-        foodNameLbl.text = foodItem.name
-        foodIngredientsLbl.text = foodItem.ingredients
-        foodDimensionsLbl.text = "\(foodItem.weight ?? "0") grams, \(foodItem.size ?? "0") cm"
-        
-        foodAddButton.setTitle("\(foodItem.price ?? 0.0) usd", for: .normal)
-        foodAddButton.layer.cornerRadius = foodAddButton.frame.size.height/2
-        foodAddButton.layer.masksToBounds = true
     }
 }

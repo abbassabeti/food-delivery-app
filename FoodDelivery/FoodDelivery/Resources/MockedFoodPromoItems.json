@@ -2,7 +2,7 @@
     {
         "itemId": "630a303d-1cc5-4f1c-a4f0-67141e656f11",
         "name": "FoodPromoItems_001",
-        "imageName": "FoodPromoItems_001.png",
+        "imageName": "FoodPromoItems_001.jpeg",
         "ingredients" : "wheat, broccoli, tomatoes, peper, cumin",
         "weight" : "120",
         "size" : "9",
@@ -11,7 +11,7 @@
     {
         "itemId": "a79c24a3-75e2-475a-9b83-a0ba7ad93869",
         "name": "FoodPromoItems_002",
-        "imageName": "FoodPromoItems_002.png",
+        "imageName": "FoodPromoItems_002.jpeg",
         "ingredients" : "flour, prawn, tomato sauce, bean, wine",
         "weight" : "200",
         "size" : "7",
@@ -20,7 +20,7 @@
     {
         "itemId": "931d29e0-ceeb-4f54-a68f-9ab3107b5dd4",
         "name": "FoodPromoItems_003",
-        "imageName": "FoodPromoItems_003.png",
+        "imageName": "FoodPromoItems_003.jpeg",
         "ingredients" : "flour, tomatoes, potatoes, chillies",
         "weight" : "250",
         "size" : "12",
@@ -29,7 +29,7 @@
     {
         "itemId": "630a303d-1cc5-4f1c-a4f0-67141e656f11",
         "name": "Repeat FoodPromoItems_001",
-        "imageName": "FoodPromoItems_001.png",
+        "imageName": "FoodPromoItems_004.jpeg",
         "ingredients" : "wheat, broccoli, tomatoes, peper, cumin",
         "weight" : "120",
         "size" : "15",
@@ -38,7 +38,7 @@
     {
         "itemId": "a79c24a3-75e2-475a-9b83-a0ba7ad93869",
         "name": "Repeat FoodPromoItems_002",
-        "imageName": "FoodPromoItems_002.png",
+        "imageName": "FoodPromoItems_005.jpeg",
         "ingredients" : "flour, prawn, tomato sauce, bean, wine",
         "weight" : "200",
         "size" : "16",
@@ -47,7 +47,7 @@
     {
         "itemId": "931d29e0-ceeb-4f54-a68f-9ab3107b5dd4",
         "name": "Repeat FoodPromoItems_003",
-        "imageName": "FoodPromoItems_003.png",
+        "imageName": "FoodPromoItems_006.jpeg",
         "ingredients" : "flour, tomatoes, potatoes, chillies",
         "weight" : "250",
         "size" : "21",

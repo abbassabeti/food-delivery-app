@@ -8,16 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		05281F87256FFE53003AEB2B /* FDPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05281F86256FFE53003AEB2B /* FDPageControl.swift */; };
+		053807F22570E95B00468DFE /* FoodCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053807F12570E95B00468DFE /* FoodCategoriesCell.swift */; };
+		053807F52570E99800468DFE /* FoodItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053807F42570E99800468DFE /* FoodItemsCell.swift */; };
+		053807F82570E9D400468DFE /* FoodPromoItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053807F72570E9D400468DFE /* FoodPromoItemsCell.swift */; };
+		053807FD2570F9B100468DFE /* FoodCardItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053807FC2570F9B100468DFE /* FoodCardItemsCell.swift */; };
+		053808002570F9D900468DFE /* FoodManagerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053807FF2570F9D900468DFE /* FoodManagerItemCell.swift */; };
+		053808422571079900468DFE /* sushi01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808302571079700468DFE /* sushi01.jpg */; };
+		053808432571079900468DFE /* pizza05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808312571079800468DFE /* pizza05.jpg */; };
+		053808442571079900468DFE /* sushi02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808322571079800468DFE /* sushi02.jpg */; };
+		053808452571079900468DFE /* sushi05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808332571079800468DFE /* sushi05.jpg */; };
+		053808462571079900468DFE /* sushi04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808342571079800468DFE /* sushi04.jpg */; };
+		053808472571079900468DFE /* sushi06.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808352571079800468DFE /* sushi06.jpg */; };
+		053808482571079900468DFE /* pizza04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808362571079800468DFE /* pizza04.jpg */; };
+		053808492571079900468DFE /* drink06.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808372571079800468DFE /* drink06.jpg */; };
+		0538084A2571079900468DFE /* sushi03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808382571079800468DFE /* sushi03.jpg */; };
+		0538084B2571079900468DFE /* drink04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808392571079800468DFE /* drink04.jpg */; };
+		0538084C2571079900468DFE /* drink05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0538083A2571079800468DFE /* drink05.jpg */; };
+		0538084D2571079900468DFE /* pizza03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0538083B2571079800468DFE /* pizza03.jpg */; };
+		0538084E2571079900468DFE /* drink03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0538083C2571079800468DFE /* drink03.jpg */; };
+		0538084F2571079900468DFE /* pizza02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0538083D2571079800468DFE /* pizza02.jpg */; };
+		053808502571079900468DFE /* drink01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0538083E2571079800468DFE /* drink01.jpg */; };
+		053808512571079900468DFE /* pizza01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0538083F2571079900468DFE /* pizza01.jpg */; };
+		053808522571079900468DFE /* pizza06.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808402571079900468DFE /* pizza06.jpg */; };
+		053808532571079900468DFE /* drink02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 053808412571079900468DFE /* drink02.jpg */; };
+		0538085B257108A600468DFE /* FoodPromoItems_002.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05380855257108A500468DFE /* FoodPromoItems_002.jpeg */; };
+		0538085C257108A600468DFE /* FoodPromoItems_003.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05380856257108A500468DFE /* FoodPromoItems_003.jpeg */; };
+		0538085D257108A600468DFE /* FoodPromoItems_001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05380857257108A500468DFE /* FoodPromoItems_001.jpeg */; };
+		0538085E257108A600468DFE /* FoodPromoItems_004.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05380858257108A500468DFE /* FoodPromoItems_004.jpeg */; };
+		0538085F257108A600468DFE /* FoodPromoItems_006.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05380859257108A600468DFE /* FoodPromoItems_006.jpeg */; };
+		05380860257108A600468DFE /* FoodPromoItems_005.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0538085A257108A600468DFE /* FoodPromoItems_005.jpeg */; };
 		824BBA3AB0E0DD72897D424A /* Pods_FoodDelivery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C744FE244AA2582908DA2D /* Pods_FoodDelivery.framework */; };
 		D83EDC182559A3EA00E5CCBF /* FoodCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EDC172559A3EA00E5CCBF /* FoodCartModel.swift */; };
 		D83EDC1A2559AA5300E5CCBF /* FoodMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EDC192559AA5300E5CCBF /* FoodMenuModel.swift */; };
 		D83EDC1E2559AE8900E5CCBF /* BadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EDC1D2559AE8900E5CCBF /* BadgeButton.swift */; };
 		D83EDC202559B06300E5CCBF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EDC1F2559B06300E5CCBF /* Extensions.swift */; };
 		D83EDC222559B12B00E5CCBF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EDC212559B12B00E5CCBF /* Utils.swift */; };
-		D83EDC3C2559B18800E5CCBF /* dot-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC242559B18800E5CCBF /* dot-white.png */; };
-		D83EDC3D2559B18800E5CCBF /* dot-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC252559B18800E5CCBF /* dot-yellow.png */; };
 		D83EDC3E2559B18800E5CCBF /* FoodCart.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC262559B18800E5CCBF /* FoodCart.png */; };
-		D83EDC3F2559B18800E5CCBF /* dot-yellow-large.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC272559B18800E5CCBF /* dot-yellow-large.png */; };
 		D83EDC402559B18800E5CCBF /* FD_001.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC292559B18800E5CCBF /* FD_001.png */; };
 		D83EDC412559B18800E5CCBF /* FD_002.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC2A2559B18800E5CCBF /* FD_002.png */; };
 		D83EDC422559B18800E5CCBF /* FD_003.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC2B2559B18800E5CCBF /* FD_003.png */; };
@@ -29,9 +55,6 @@
 		D83EDC482559B18800E5CCBF /* FoodItems_004.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC322559B18800E5CCBF /* FoodItems_004.png */; };
 		D83EDC492559B18800E5CCBF /* FoodDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC332559B18800E5CCBF /* FoodDelete.png */; };
 		D83EDC4A2559B18800E5CCBF /* Payment.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC342559B18800E5CCBF /* Payment.png */; };
-		D83EDC4B2559B18800E5CCBF /* FoodPromoItems_001.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC362559B18800E5CCBF /* FoodPromoItems_001.png */; };
-		D83EDC4C2559B18800E5CCBF /* FoodPromoItems_002.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC372559B18800E5CCBF /* FoodPromoItems_002.png */; };
-		D83EDC4D2559B18800E5CCBF /* FoodPromoItems_003.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC382559B18800E5CCBF /* FoodPromoItems_003.png */; };
 		D83EDC4E2559B18800E5CCBF /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC392559B18800E5CCBF /* Back.png */; };
 		D83EDC4F2559B18800E5CCBF /* MockedFoodItems.json in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC3A2559B18800E5CCBF /* MockedFoodItems.json */; };
 		D83EDC502559B18800E5CCBF /* MockedFoodPromoItems.json in Resources */ = {isa = PBXBuildFile; fileRef = D83EDC3B2559B18800E5CCBF /* MockedFoodPromoItems.json */; };
@@ -56,6 +79,35 @@
 
 /* Begin PBXFileReference section */
 		05281F86256FFE53003AEB2B /* FDPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDPageControl.swift; sourceTree = "<group>"; };
+		053807F12570E95B00468DFE /* FoodCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoriesCell.swift; sourceTree = "<group>"; };
+		053807F42570E99800468DFE /* FoodItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemsCell.swift; sourceTree = "<group>"; };
+		053807F72570E9D400468DFE /* FoodPromoItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPromoItemsCell.swift; sourceTree = "<group>"; };
+		053807FC2570F9B100468DFE /* FoodCardItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardItemsCell.swift; sourceTree = "<group>"; };
+		053807FF2570F9D900468DFE /* FoodManagerItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodManagerItemCell.swift; sourceTree = "<group>"; };
+		053808302571079700468DFE /* sushi01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sushi01.jpg; sourceTree = "<group>"; };
+		053808312571079800468DFE /* pizza05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizza05.jpg; sourceTree = "<group>"; };
+		053808322571079800468DFE /* sushi02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sushi02.jpg; sourceTree = "<group>"; };
+		053808332571079800468DFE /* sushi05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sushi05.jpg; sourceTree = "<group>"; };
+		053808342571079800468DFE /* sushi04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sushi04.jpg; sourceTree = "<group>"; };
+		053808352571079800468DFE /* sushi06.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sushi06.jpg; sourceTree = "<group>"; };
+		053808362571079800468DFE /* pizza04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizza04.jpg; sourceTree = "<group>"; };
+		053808372571079800468DFE /* drink06.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink06.jpg; sourceTree = "<group>"; };
+		053808382571079800468DFE /* sushi03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sushi03.jpg; sourceTree = "<group>"; };
+		053808392571079800468DFE /* drink04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink04.jpg; sourceTree = "<group>"; };
+		0538083A2571079800468DFE /* drink05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink05.jpg; sourceTree = "<group>"; };
+		0538083B2571079800468DFE /* pizza03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizza03.jpg; sourceTree = "<group>"; };
+		0538083C2571079800468DFE /* drink03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink03.jpg; sourceTree = "<group>"; };
+		0538083D2571079800468DFE /* pizza02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizza02.jpg; sourceTree = "<group>"; };
+		0538083E2571079800468DFE /* drink01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink01.jpg; sourceTree = "<group>"; };
+		0538083F2571079900468DFE /* pizza01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizza01.jpg; sourceTree = "<group>"; };
+		053808402571079900468DFE /* pizza06.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizza06.jpg; sourceTree = "<group>"; };
+		053808412571079900468DFE /* drink02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drink02.jpg; sourceTree = "<group>"; };
+		05380855257108A500468DFE /* FoodPromoItems_002.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FoodPromoItems_002.jpeg; sourceTree = "<group>"; };
+		05380856257108A500468DFE /* FoodPromoItems_003.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FoodPromoItems_003.jpeg; sourceTree = "<group>"; };
+		05380857257108A500468DFE /* FoodPromoItems_001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FoodPromoItems_001.jpeg; sourceTree = "<group>"; };
+		05380858257108A500468DFE /* FoodPromoItems_004.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FoodPromoItems_004.jpeg; sourceTree = "<group>"; };
+		05380859257108A600468DFE /* FoodPromoItems_006.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FoodPromoItems_006.jpeg; sourceTree = "<group>"; };
+		0538085A257108A600468DFE /* FoodPromoItems_005.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FoodPromoItems_005.jpeg; sourceTree = "<group>"; };
 		6D87F7FD3A800DC708A8DD22 /* Pods-FoodDelivery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDelivery.release.xcconfig"; path = "Target Support Files/Pods-FoodDelivery/Pods-FoodDelivery.release.xcconfig"; sourceTree = "<group>"; };
 		B4C744FE244AA2582908DA2D /* Pods_FoodDelivery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodDelivery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83EDC172559A3EA00E5CCBF /* FoodCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartModel.swift; sourceTree = "<group>"; };
@@ -63,10 +115,7 @@
 		D83EDC1D2559AE8900E5CCBF /* BadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeButton.swift; sourceTree = "<group>"; };
 		D83EDC1F2559B06300E5CCBF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D83EDC212559B12B00E5CCBF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		D83EDC242559B18800E5CCBF /* dot-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot-white.png"; sourceTree = "<group>"; };
-		D83EDC252559B18800E5CCBF /* dot-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot-yellow.png"; sourceTree = "<group>"; };
 		D83EDC262559B18800E5CCBF /* FoodCart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FoodCart.png; sourceTree = "<group>"; };
-		D83EDC272559B18800E5CCBF /* dot-yellow-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot-yellow-large.png"; sourceTree = "<group>"; };
 		D83EDC292559B18800E5CCBF /* FD_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FD_001.png; sourceTree = "<group>"; };
 		D83EDC2A2559B18800E5CCBF /* FD_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FD_002.png; sourceTree = "<group>"; };
 		D83EDC2B2559B18800E5CCBF /* FD_003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FD_003.png; sourceTree = "<group>"; };
@@ -78,9 +127,6 @@
 		D83EDC322559B18800E5CCBF /* FoodItems_004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FoodItems_004.png; sourceTree = "<group>"; };
 		D83EDC332559B18800E5CCBF /* FoodDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FoodDelete.png; sourceTree = "<group>"; };
 		D83EDC342559B18800E5CCBF /* Payment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Payment.png; sourceTree = "<group>"; };
-		D83EDC362559B18800E5CCBF /* FoodPromoItems_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FoodPromoItems_001.png; sourceTree = "<group>"; };
-		D83EDC372559B18800E5CCBF /* FoodPromoItems_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FoodPromoItems_002.png; sourceTree = "<group>"; };
-		D83EDC382559B18800E5CCBF /* FoodPromoItems_003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FoodPromoItems_003.png; sourceTree = "<group>"; };
 		D83EDC392559B18800E5CCBF /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
 		D83EDC3A2559B18800E5CCBF /* MockedFoodItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockedFoodItems.json; sourceTree = "<group>"; };
 		D83EDC3B2559B18800E5CCBF /* MockedFoodPromoItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockedFoodPromoItems.json; sourceTree = "<group>"; };
@@ -118,6 +164,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		053807F02570E94000468DFE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				053807F12570E95B00468DFE /* FoodCategoriesCell.swift */,
+				053807F42570E99800468DFE /* FoodItemsCell.swift */,
+				053807F72570E9D400468DFE /* FoodPromoItemsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		053807FB2570F9A100468DFE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				053807FC2570F9B100468DFE /* FoodCardItemsCell.swift */,
+				053807FF2570F9D900468DFE /* FoodManagerItemCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A4842D24BC22F694192273F6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,10 +225,7 @@
 		D83EDC232559B18800E5CCBF /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				D83EDC242559B18800E5CCBF /* dot-white.png */,
-				D83EDC252559B18800E5CCBF /* dot-yellow.png */,
 				D83EDC262559B18800E5CCBF /* FoodCart.png */,
-				D83EDC272559B18800E5CCBF /* dot-yellow-large.png */,
 				D83EDC282559B18800E5CCBF /* FD */,
 				D83EDC2C2559B18800E5CCBF /* FoodDeliveryLogo.png */,
 				D83EDC2D2559B18800E5CCBF /* FoodItems */,
@@ -188,6 +250,24 @@
 		D83EDC2D2559B18800E5CCBF /* FoodItems */ = {
 			isa = PBXGroup;
 			children = (
+				0538083E2571079800468DFE /* drink01.jpg */,
+				053808412571079900468DFE /* drink02.jpg */,
+				0538083C2571079800468DFE /* drink03.jpg */,
+				053808392571079800468DFE /* drink04.jpg */,
+				0538083A2571079800468DFE /* drink05.jpg */,
+				053808372571079800468DFE /* drink06.jpg */,
+				0538083F2571079900468DFE /* pizza01.jpg */,
+				0538083D2571079800468DFE /* pizza02.jpg */,
+				0538083B2571079800468DFE /* pizza03.jpg */,
+				053808362571079800468DFE /* pizza04.jpg */,
+				053808312571079800468DFE /* pizza05.jpg */,
+				053808402571079900468DFE /* pizza06.jpg */,
+				053808302571079700468DFE /* sushi01.jpg */,
+				053808322571079800468DFE /* sushi02.jpg */,
+				053808382571079800468DFE /* sushi03.jpg */,
+				053808342571079800468DFE /* sushi04.jpg */,
+				053808332571079800468DFE /* sushi05.jpg */,
+				053808352571079800468DFE /* sushi06.jpg */,
 				D83EDC2E2559B18800E5CCBF /* FoodItems_003.png */,
 				D83EDC2F2559B18800E5CCBF /* FoodItems_002.png */,
 				D83EDC302559B18800E5CCBF /* FoodItems_001.png */,
@@ -200,9 +280,12 @@
 		D83EDC352559B18800E5CCBF /* FoodPromoItems */ = {
 			isa = PBXGroup;
 			children = (
-				D83EDC362559B18800E5CCBF /* FoodPromoItems_001.png */,
-				D83EDC372559B18800E5CCBF /* FoodPromoItems_002.png */,
-				D83EDC382559B18800E5CCBF /* FoodPromoItems_003.png */,
+				05380857257108A500468DFE /* FoodPromoItems_001.jpeg */,
+				05380855257108A500468DFE /* FoodPromoItems_002.jpeg */,
+				05380856257108A500468DFE /* FoodPromoItems_003.jpeg */,
+				05380858257108A500468DFE /* FoodPromoItems_004.jpeg */,
+				0538085A257108A600468DFE /* FoodPromoItems_005.jpeg */,
+				05380859257108A600468DFE /* FoodPromoItems_006.jpeg */,
 			);
 			path = FoodPromoItems;
 			sourceTree = "<group>";
@@ -219,6 +302,7 @@
 		D874AA652559694A00BFBFC3 /* FoodCartModule */ = {
 			isa = PBXGroup;
 			children = (
+				053807FB2570F9A100468DFE /* Cells */,
 				D8E5839625596D3C000BF96F /* FoodCartProtocol.swift */,
 				D8E5839725596D3C000BF96F /* FoodCartInteractor.swift */,
 				D8E5839825596D3C000BF96F /* FoodCartPresenter.swift */,
@@ -268,6 +352,7 @@
 		D8E583A025596D4A000BF96F /* FoodMenuModule */ = {
 			isa = PBXGroup;
 			children = (
+				053807F02570E94000468DFE /* Cells */,
 				D8E583A525596D60000BF96F /* FoodMenuProtocol.swift */,
 				D8E583A325596D60000BF96F /* FoodMenuInteractor.swift */,
 				D8E583A425596D60000BF96F /* FoodMenuPresenter.swift */,
@@ -338,30 +423,48 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D83EDC4B2559B18800E5CCBF /* FoodPromoItems_001.png in Resources */,
 				D8C1983B254E54B20057A4D9 /* LaunchScreen.storyboard in Resources */,
-				D83EDC4D2559B18800E5CCBF /* FoodPromoItems_003.png in Resources */,
+				053808532571079900468DFE /* drink02.jpg in Resources */,
+				0538084B2571079900468DFE /* drink04.jpg in Resources */,
+				053808522571079900468DFE /* pizza06.jpg in Resources */,
+				053808472571079900468DFE /* sushi06.jpg in Resources */,
+				0538084C2571079900468DFE /* drink05.jpg in Resources */,
+				05380860257108A600468DFE /* FoodPromoItems_005.jpeg in Resources */,
+				053808482571079900468DFE /* pizza04.jpg in Resources */,
+				0538085F257108A600468DFE /* FoodPromoItems_006.jpeg in Resources */,
+				0538084E2571079900468DFE /* drink03.jpg in Resources */,
+				053808442571079900468DFE /* sushi02.jpg in Resources */,
+				053808422571079900468DFE /* sushi01.jpg in Resources */,
 				D83EDC482559B18800E5CCBF /* FoodItems_004.png in Resources */,
-				D83EDC3C2559B18800E5CCBF /* dot-white.png in Resources */,
 				D8C19838254E54B20057A4D9 /* Assets.xcassets in Resources */,
 				D83EDC452559B18800E5CCBF /* FoodItems_002.png in Resources */,
 				D8C19836254E54B10057A4D9 /* Main.storyboard in Resources */,
 				D83EDC442559B18800E5CCBF /* FoodItems_003.png in Resources */,
+				053808452571079900468DFE /* sushi05.jpg in Resources */,
 				D83EDC432559B18800E5CCBF /* FoodDeliveryLogo.png in Resources */,
 				D83EDC4F2559B18800E5CCBF /* MockedFoodItems.json in Resources */,
+				0538085E257108A600468DFE /* FoodPromoItems_004.jpeg in Resources */,
+				0538085B257108A600468DFE /* FoodPromoItems_002.jpeg in Resources */,
 				D83EDC502559B18800E5CCBF /* MockedFoodPromoItems.json in Resources */,
-				D83EDC3F2559B18800E5CCBF /* dot-yellow-large.png in Resources */,
-				D83EDC3D2559B18800E5CCBF /* dot-yellow.png in Resources */,
+				0538085C257108A600468DFE /* FoodPromoItems_003.jpeg in Resources */,
 				D83EDC3E2559B18800E5CCBF /* FoodCart.png in Resources */,
 				D83EDC472559B18800E5CCBF /* FoodItems_005.png in Resources */,
-				D83EDC4C2559B18800E5CCBF /* FoodPromoItems_002.png in Resources */,
 				D83EDC462559B18800E5CCBF /* FoodItems_001.png in Resources */,
 				D83EDC422559B18800E5CCBF /* FD_003.png in Resources */,
+				053808492571079900468DFE /* drink06.jpg in Resources */,
+				0538084D2571079900468DFE /* pizza03.jpg in Resources */,
 				D83EDC412559B18800E5CCBF /* FD_002.png in Resources */,
 				D83EDC492559B18800E5CCBF /* FoodDelete.png in Resources */,
 				D83EDC4A2559B18800E5CCBF /* Payment.png in Resources */,
+				053808432571079900468DFE /* pizza05.jpg in Resources */,
+				053808512571079900468DFE /* pizza01.jpg in Resources */,
+				0538084A2571079900468DFE /* sushi03.jpg in Resources */,
 				D83EDC4E2559B18800E5CCBF /* Back.png in Resources */,
+				053808502571079900468DFE /* drink01.jpg in Resources */,
+				0538085D257108A600468DFE /* FoodPromoItems_001.jpeg in Resources */,
 				D83EDC402559B18800E5CCBF /* FD_001.png in Resources */,
+				0538084F2571079900468DFE /* pizza02.jpg in Resources */,
+				053808462571079900468DFE /* sushi04.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +522,7 @@
 				05281F87256FFE53003AEB2B /* FDPageControl.swift in Sources */,
 				D8E5839F25596D3C000BF96F /* FoodCartViewController.swift in Sources */,
 				D874AA64255965DF00BFBFC3 /* FDNetworkManager.swift in Sources */,
+				053808002570F9D900468DFE /* FoodManagerItemCell.swift in Sources */,
 				D874AA622559657100BFBFC3 /* FoodDeliveryAPI.swift in Sources */,
 				D83EDC1E2559AE8900E5CCBF /* BadgeButton.swift in Sources */,
 				D8E5839E25596D3C000BF96F /* FoodCartRouter.swift in Sources */,
@@ -426,14 +530,18 @@
 				D8C1982F254E54B10057A4D9 /* AppDelegate.swift in Sources */,
 				D83EDC182559A3EA00E5CCBF /* FoodCartModel.swift in Sources */,
 				D83EDC1A2559AA5300E5CCBF /* FoodMenuModel.swift in Sources */,
+				053807F52570E99800468DFE /* FoodItemsCell.swift in Sources */,
 				D8E583A925596D60000BF96F /* FoodMenuPresenter.swift in Sources */,
+				053807FD2570F9B100468DFE /* FoodCardItemsCell.swift in Sources */,
 				D8E583A725596D60000BF96F /* FoodMenuRouter.swift in Sources */,
 				D8C19831254E54B10057A4D9 /* SceneDelegate.swift in Sources */,
 				D8E5839D25596D3C000BF96F /* FoodCartPresenter.swift in Sources */,
+				053807F82570E9D400468DFE /* FoodPromoItemsCell.swift in Sources */,
 				D83EDC222559B12B00E5CCBF /* Utils.swift in Sources */,
 				D8E5839C25596D3C000BF96F /* FoodCartInteractor.swift in Sources */,
 				D8E583AA25596D60000BF96F /* FoodMenuProtocol.swift in Sources */,
 				D8E583A625596D60000BF96F /* FoodMenuViewController.swift in Sources */,
+				053807F22570E95B00468DFE /* FoodCategoriesCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

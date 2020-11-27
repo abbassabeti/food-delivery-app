@@ -108,6 +108,14 @@ extension FoodCartViewController {
     }
 
     func initFoodManagerItemsView() {
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 20, height: 35)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
+        foodManagerItemsView.collectionViewLayout = flowLayout
+        
         foodManagerItems
             .bind(to: foodManagerItemsView
                 .rx
@@ -158,41 +166,4 @@ extension FoodCartViewController {
     }
 }
 
-class FoodManagerItemCell : UICollectionViewCell {
-    static let Identifier = "FoodManagerItemCell"
-    
-    @IBOutlet private var titleLbl: UILabel!
-    
-    func setValue(_ item: String) {
-        titleLbl.text = item
-    }
-    
-    func updateAsSelectedUI() {
-        titleLbl.textColor = isSelected ? .black : .lightGray
-    }
-}
 
-class FoodCartItemsCell : UITableViewCell {
-    static let Identifier = "FoodCartItemsCell"
-    
-    @IBOutlet private var foodImgView: UIImageView!
-    @IBOutlet private var foodNameLbl: UILabel!
-    @IBOutlet private var foodTotalPriceLbl: UILabel!
-    @IBOutlet private var foodPriceLbl: UILabel!
-    @IBOutlet private var foodQtyLbl: UILabel!
-    @IBOutlet var foodRemoveButton: UIButton!
-    
-    func setValues(_ foodItemSummary: FoodItemSummary) {
-        foodImgView.image = UIImage(named: foodItemSummary.foodItem?.imageName ?? "")
-        foodImgView.layer.borderWidth = 2
-        foodImgView.layer.borderColor = UIColor.lightGray.cgColor
-        
-        foodNameLbl.text = foodItemSummary.foodItem?.name
-        
-        foodPriceLbl.text = "\(foodItemSummary.foodItem?.price ?? 0.0) usd"
-        
-        foodTotalPriceLbl.text = "\(foodItemSummary.totalCost) usd"
-        
-        foodQtyLbl.text = "qty: \(foodItemSummary.foodItemCount)"
-    }
-}
