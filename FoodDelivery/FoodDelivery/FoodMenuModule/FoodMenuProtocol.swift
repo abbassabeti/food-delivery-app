@@ -14,7 +14,7 @@ protocol PresenterToViewFoodMenuProtocol {
     func onReceivingFoodItemsSuccessResponse()
     func onReceivingFoodItemsFailureResponse(_ error: Error)
     func onNewCategorySelected(isLtoR: Bool)
-    func toast(_ str: String)
+    func showToast(_ str: String)
 }
 
 

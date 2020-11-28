@@ -67,6 +67,10 @@ class FoodMenuViewController: UIViewController, UICollectionViewDelegate, UITabl
 
 extension FoodMenuViewController: PresenterToViewFoodMenuProtocol {
     
+    func showToast(_ message: String) {
+        self.toast(message)
+    }
+    
     func onNewCategorySelected(isLtoR: Bool){
         guard let displayFoodItems = self.foodMenuPresenter?.viewModel.displayFoodItemsRelay.value else {return}
         if let viewToAnimate = self.foodItemsView {
@@ -273,10 +277,6 @@ extension FoodMenuViewController {
         self.foodMenuPresenter?.viewModel.displayFoodPromoItemsRelay.map({$0.count}).asObservable().bind(to: foodPromoItemsPageCtrl.rx.numberOfPages).disposed(by: disposeBag)
         
         foodPromoItemsPageCtrl.rx.controlEvent(.valueChanged)
-            // commented, until touch event handled..
-//            .subscribe(onNext: { [unowned self] in
-//                self.moveToNextPromo(self.foodPromoItemsPageCtrl.currentPage + 1)
-//            })
             .subscribe(onNext: { value in
                 self.moveToNextPromo(self.foodPromoItemsPageCtrl.currentPage + 1)
                 

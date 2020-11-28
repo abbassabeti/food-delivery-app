@@ -29,14 +29,17 @@ class FoodMenuPresenter: ViewToPresenterFoodMenuProtocol {
         switch newCategory {
             case 0:
                 self.viewModel.displayFoodItemsRelay.accept(self.viewModel.foodItemsSource.filter { $0.type == 1 })
+                self.view?.onNewCategorySelected(isLtoR: isLtoR)
             case 1:
                 self.viewModel.displayFoodItemsRelay.accept(self.viewModel.foodItemsSource.filter { $0.type == 2 })
+                self.view?.onNewCategorySelected(isLtoR: isLtoR)
             case 2:
                 self.viewModel.displayFoodItemsRelay.accept(self.viewModel.foodItemsSource.filter { $0.type == 3 })
+                self.view?.onNewCategorySelected(isLtoR: isLtoR)
             default:
                 print("popup")
                 // assumed category index within the range :)
-                self.view?.toast("\(self.viewModel.foodCategoriesSource[newCategory]) Coming Soon..")
+                self.view?.showToast("\(self.viewModel.foodCategoriesSource[newCategory]) Coming Soon..")
         }
         
         

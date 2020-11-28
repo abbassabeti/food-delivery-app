@@ -36,6 +36,7 @@ class FoodItemsCell : UITableViewCell {
     func setShadow(){
         let shadowView : UIView = self.foodItemCellView
         shadowView.setShadow(contentView: self.contentView, shadowOpacity: 0.05, shadowRadius: 8, cornerRadius: 8, shadowOffset: CGSize(width: 1, height: 3))
+        foodImgView.roundCorners(topLeft: 20, topRight: 20)
     }
     
     func setValues(_ foodItem: FoodItem) {
